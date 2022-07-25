@@ -19,9 +19,9 @@ def load_images(img_path):
     for i in range(len(image_splitted)):
         x = image_splitted[i][0]
         image_separated.append(x)
-    opened_images = [Image.open(i) for i in image_paths]
-    for j in image_separated:
-        print(j)
+    opened_images = [Image.open(j) for j in image_paths]
+    for k in image_separated:
+        print(k)
     return image_separated, opened_images
 
 load_images(formatted_input)
