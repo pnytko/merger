@@ -17,9 +17,13 @@ def load_images(img_path):
     image_splitted = list(map(os.path.splitext, image_filenames))
     image_separated = []
     for i in range(len(image_splitted)):
-        print(image_splitted[i][0])  
+        x = image_splitted[i][0]
+        image_separated.append(x)
     opened_images = [Image.open(i) for i in image_paths]
+    for j in image_separated:
+        print(j)
+    return image_separated, opened_images
 
 load_images(formatted_input)
 
-#os.path.splitext
+
