@@ -19,19 +19,33 @@ def load_images(img_path):
     for i in range(len(image_splitted)):
         entry = image_splitted[i][0]
         image_separated.append(entry)
+    #Data presentation
+    #print(image_separated)
+    #print(len(image_separated))
+    
     return image_separated
-
-filtered_list = load_images(formatted_input)
-temp_entry = (filtered_list[1])
 
 def regex_solution(word):
     corner_values = []
     for i in range(len(word)):
-        string_analyse = re.findall('[0-9]+', word[i])
-        print(string_analyse)
+        string_analyse = (re.findall('[0-9]+', word[i]))
+        corner_values.append(string_analyse)
+    #Data presentation
+    #print(corner_values)
+    #print(len(corner_values))
 
-regex_solution(filtered_list)
+    return corner_values
 
-#TODO - dictionary
+def dictionary_fitting(k, v):
+    dict = {k[i]: v[i] for i in range(len(k))}
+    #print(dict)
+    
+    return dict
+    
+filtered_list = load_images(formatted_input)
+c_value = regex_solution(filtered_list)
+dict_to_analyse = dictionary_fitting(filtered_list, c_value)
+print(dict_to_analyse)
+
 
 #opened_images = [Image.open(j) for j in image_paths]
