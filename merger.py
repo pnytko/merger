@@ -19,9 +19,6 @@ def load_images(img_path):
     for i in range(len(image_splitted)):
         entry = image_splitted[i][0]
         image_separated.append(entry)
-    #Data presentation
-    #print(image_separated)
-    #print(len(image_separated))
     
     return image_separated, image_paths
 
@@ -30,26 +27,31 @@ def regex_solution(word):
     for i in range(len(word)):
         string_analyse = (re.findall('[0-9]+', word[i]))
         corner_values.append(string_analyse)
-    #Data presentation
-    #print(corner_values)
-    #print(len(corner_values))
+        #Type conversion
+    for j in corner_values:
+        j[0] = int(j[0])
+        j[1] = int(j[1])
 
     return corner_values
 
 def dictionary_fitting(k, v):
-    dict = {k[i]: v[i] for i in range(len(k))}
-    #print(dict)
-    
+    #Dict structure - IMPORTANT
+    dict = [{'path': k[i], 'corners': v[i]} for i in range(len(k))]
     return dict
-    
-#filtered_list = load_images(formatted_input)
-#c_value = regex_solution(filtered_list)
-#dict_to_analyse = dictionary_fitting(filtered_list, c_value)
+
+def dictionary_analysis(input_dict):
+    for i in input_dict:
+        #print(i['corners'][0])
+        pass
+
 
 #Multireturn defining - IMPORTANT
 image_separated, image_paths = load_images(formatted_input)
 c_value = regex_solution(image_separated)
 dict_to_analyse = dictionary_fitting(image_paths, c_value)
 
-print(dict_to_analyse)
+analiza = dictionary_analysis(dict_to_analyse)
+#print(dict_to_analyse)
+
+
 #opened_images = [Image.open(j) for j in image_paths]
