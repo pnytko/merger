@@ -4,6 +4,7 @@ import argparse
 import glob
 import os
 import re
+import itertools
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--dir_in", type = str, required = True)
@@ -40,18 +41,26 @@ def dictionary_fitting(k, v):
     return dict
 
 def dictionary_analysis(input_dict):
-    for i in input_dict:
-        #print(i['corners'][0])
-        pass
+    corners_list = []
+    group_paths = []
+    for input_ele in input_dict:
+        if [input_ele['corners'][0]] not in corners_list:
+            corners_list.append([input_ele['corners'][0]])
+            group_paths.append([])
+    for i in range (len(corners_list)):
+        for input_ele in input_dict:
+            if corners_list[i][0] == input_ele['corners'][0]:
+                group_paths[i].append(input_ele['path'])
 
+    # for group in group_paths:
+    #     print(group)
+    return group_paths
 
 #Multireturn defining - IMPORTANT
 image_separated, image_paths = load_images(formatted_input)
 c_value = regex_solution(image_separated)
 dict_to_analyse = dictionary_fitting(image_paths, c_value)
-
-analiza = dictionary_analysis(dict_to_analyse)
-#print(dict_to_analyse)
-
+grouped_analysis = dictionary_analysis(dict_to_analyse)
+print(grouped_analysis)
 
 #opened_images = [Image.open(j) for j in image_paths]
