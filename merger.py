@@ -23,7 +23,7 @@ def load_images(img_path):
     #print(image_separated)
     #print(len(image_separated))
     
-    return image_separated
+    return image_separated, image_paths
 
 def regex_solution(word):
     corner_values = []
@@ -42,10 +42,14 @@ def dictionary_fitting(k, v):
     
     return dict
     
-filtered_list = load_images(formatted_input)
-c_value = regex_solution(filtered_list)
-dict_to_analyse = dictionary_fitting(filtered_list, c_value)
+#filtered_list = load_images(formatted_input)
+#c_value = regex_solution(filtered_list)
+#dict_to_analyse = dictionary_fitting(filtered_list, c_value)
+
+#Multireturn defining - IMPORTANT
+image_separated, image_paths = load_images(formatted_input)
+c_value = regex_solution(image_separated)
+dict_to_analyse = dictionary_fitting(image_paths, c_value)
+
 print(dict_to_analyse)
-
-
 #opened_images = [Image.open(j) for j in image_paths]
