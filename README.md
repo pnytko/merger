@@ -1,8 +1,5 @@
 # merger
-Opposite for merger from my repositories.
-
-# splitter
-Easy and fast merging of image.
+Opposite for splitter from my repositories.
 
 **Usage**
 <pre>python merger.py --path image_tile_dir</pre>
